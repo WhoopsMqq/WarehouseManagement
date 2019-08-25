@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: WarehouseManagement
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/management?useSSL=true&serverTimezone=UTC&characterEncoding=utf-8
+    username: root
+    password: moon2003
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8321
