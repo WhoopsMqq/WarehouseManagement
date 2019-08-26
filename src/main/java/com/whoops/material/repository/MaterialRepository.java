@@ -1,6 +1,6 @@
-package com.whoops.repository.material;
+package com.whoops.material.repository;
 
-import com.whoops.pojo.material.Material;
+import com.whoops.material.pojo.Material;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MaterialRepository extends JpaRepository<Material,Long> {

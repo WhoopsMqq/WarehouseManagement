@@ -1,4 +1,4 @@
-package com.whoops.pojo.accessories;
+package com.whoops.accessories.pojo;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.whoops.pojo;
+package com.whoops.commons;
 
 import java.util.HashMap;
 import java.util.Map;

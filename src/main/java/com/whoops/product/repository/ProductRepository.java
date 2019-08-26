@@ -1,6 +1,6 @@
-package com.whoops.repository.product;
+package com.whoops.product.repository;
 
-import com.whoops.pojo.product.Product;
+import com.whoops.product.pojo.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductRepository extends JpaRepository<Product,Long> {
