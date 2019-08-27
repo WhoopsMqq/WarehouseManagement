@@ -7,9 +7,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
-    @RequestMapping
+    @RequestMapping("/")
     public String index(){
-        return "index-1";
+        return "index";
     }
 
     @RequestMapping("/main")
