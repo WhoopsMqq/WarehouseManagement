@@ -2,8 +2,9 @@ package com.whoops.commons;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+
 
 @Controller
 public class MainController {
@@ -13,8 +14,18 @@ public class MainController {
     }
 
     @RequestMapping("/main")
-    public ModelAndView main(Model model){
-        return new ModelAndView("/page/main","model",model);
+    public String main(Model model){
+        return "/page/main";
+    }
+
+    @GetMapping("/login")
+    public String login(){
+        return "/page/login/login";
+    }
+
+    @GetMapping("/changePwd")
+    public String changePwd(){
+        return "/page/user/changePwd";
     }
 
 }
