@@ -18,10 +18,6 @@ public class MainController {
         return "/page/main";
     }
 
-    @GetMapping("/login")
-    public String login(){
-        return "/page/login/login";
-    }
 
     @GetMapping("/changePwd")
     public String changePwd(){
