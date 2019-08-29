@@ -2,26 +2,26 @@
 	"contentManagement": [
 		{
 			"title": "物品种类",
-			"icon": "icon-text",
-			"href": "page/news/newsList.html",
+			"icon": "&#xe631;",
+			"href": "/userList",
 			"spread": false
 		},
 		{
 			"title": "出入库记录",
 			"icon": "icon-text",
-			"href": "page/news/newsList.html",
+			"href": "/userList",
 			"spread": false
 		},
 		{
 			"title": "数据分析",
 			"icon": "&#xe634;",
-			"href": "page/img/images.html",
+			"href": "/userList",
 			"spread": false
 		},
 		{
 			"title": "用户中心",
 			"icon": "&#xe630;",
-			"href": "",
+			"href": "/userList",
 			"spread": false
 		}
 	]

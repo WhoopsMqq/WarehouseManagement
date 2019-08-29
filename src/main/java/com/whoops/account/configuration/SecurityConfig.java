@@ -42,13 +42,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/login","/login-error","/css/**","/js/**","/font/**","/images/**","/layui/**","/whoops.ico").permitAll() //无论是谁都可以访问
-                .antMatchers("/**").hasRole("ADMIN")//需要ADMIN角色才能访问
+//                .antMatchers("/**").hasRole("ADMIN")//需要ADMIN角色才能访问
+                .antMatchers("/**").permitAll()
                 .and()
                     .formLogin() //基于表单的验证方式
                     .loginPage("/login")//自定义的表单验证
                     .failureUrl("/login-error")//验证失败重定向页面
                 .and()
                     .rememberMe().key(KEY)//启用remember me
+                .and()
+                    .headers().frameOptions().disable()
                 .and().exceptionHandling().accessDeniedPage("/403");//异常处理拒绝访问就重定向到403页面
     }
 

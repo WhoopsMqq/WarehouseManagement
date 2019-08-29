@@ -24,4 +24,9 @@ public class MainController {
         return "/page/user/changePwd";
     }
 
+    @RequestMapping("/userList")
+    public String userList(){
+        return "/page/user/userList";
+    }
+
 }
