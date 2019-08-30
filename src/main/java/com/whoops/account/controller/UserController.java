@@ -51,7 +51,7 @@ public class UserController {
         return "/page/user/userAdd";
     }
 
-    @PostMapping("/addUser")
+    @RequestMapping("/addUser")
     @ResponseBody
     public String addUser(@RequestParam("username") String username,@RequestParam("name") String name){
         Auth auth = authService.getAuthById(1L);

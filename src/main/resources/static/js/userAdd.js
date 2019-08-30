@@ -3,25 +3,48 @@ layui.use(['form','layer'],function(){
         layer = parent.layer === undefined ? layui.layer : top.layer,
         $ = layui.jquery;
 
-    form.on("submit(addUser)",function(data){
-        //弹出loading
+    function submitAddUser(){
         var index = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
         // 实际使用时的提交信息
-        $.post(
-          "/addUser",
-            {
-                username : $(".userName").val(),//登录名
-                name : $(".name").val()//姓名
-            },
+        var username = $(".userName").val();
+        var name = $(".name").val();
+        $.get(
+            "/addUser?username="+username+"&name="+name,
             function (str) {
                 top.layer.close(index);
-                top.layer.msg("用户添加成功！");
+                top.layer.msg(str);
                 layer.closeAll("iframe");
                 //刷新父页面
                 parent.location.reload();
             }
         );
+        return false;
+    }
+
+    $(".addUser").click(function () {
+       submitAddUser();
     });
+
+    // form.on("submit(addUser2)",function(data){
+    //     //弹出loading
+    //     var index = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
+    //     // 实际使用时的提交信息
+    //     $.post(
+    //         "/addUser",
+    //         {
+    //             username : $(".userName").val(),//登录名
+    //             name : $(".name").val()//姓名
+    //         },
+    //         function (str) {
+    //             top.layer.close(index);
+    //             top.layer.msg(str);
+    //             layer.closeAll("iframe");
+    //             //刷新父页面
+    //             parent.location.reload();
+    //         }
+    //     );
+    //     return false;
+    // });
 
     //格式化时间
     function filterTime(val){

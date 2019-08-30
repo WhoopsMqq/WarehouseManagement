@@ -31,16 +31,12 @@ layui.use(['form','layer','table','laytpl'],function(){
             type : 2,
             content : "/userAdd",
             success : function(layero, index){
-                // var body = layui.layer.getChildFrame('body', index);
-                // if(edit){
-                //     body.find(".userName").val(edit.userName);  //登录名
-                //     body.find(".userEmail").val(edit.userEmail);  //邮箱
-                //     body.find(".userSex input[value="+edit.userSex+"]").prop("checked","checked");  //性别
-                //     body.find(".userGrade").val(edit.userGrade);  //会员等级
-                //     body.find(".userStatus").val(edit.userStatus);    //用户状态
-                //     body.find(".userDesc").text(edit.userDesc);    //用户简介
-                //     form.render();
-                // }
+                var body = layui.layer.getChildFrame('body', index);
+                if(edit){
+                    body.find(".userName").val(edit.username);  //登录名
+                    body.find(".name").val(edit.name);  //姓名
+                    form.render();
+                }
                 setTimeout(function(){
                     layui.layer.tips('点击此处返回用户列表', '.layui-layer-setwin .layui-layer-close', {
                         tips: 3
