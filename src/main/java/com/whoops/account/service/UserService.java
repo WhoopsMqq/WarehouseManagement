@@ -8,6 +8,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.List;
+
 @Service
 public class UserService implements UserDetailsService {
 
@@ -22,4 +25,19 @@ public class UserService implements UserDetailsService {
         }
         return user;
     }
+
+    public List<User> loadAllUser(){
+        return userRepository.findAll();
+    }
+
+    @Transactional
+    public String saveUser(User user){
+        try {
+            userRepository.save(user);
+        }catch (Exception e){
+            return "用户保存失败!";
+        }
+        return "用户保存成功!";
+    }
+
 }

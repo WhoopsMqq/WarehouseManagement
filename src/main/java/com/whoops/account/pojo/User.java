@@ -1,16 +1,19 @@
 package com.whoops.account.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class User implements UserDetails {
+//@JsonIgnoreProperties("hibernateLazyInitializer")
+public class User implements UserDetails, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -18,20 +21,34 @@ public class User implements UserDetails {
     @Column(length = 30,nullable = false)
     private String username;
 
+    @Column(length = 20,nullable = false)
+    private String name;
+
     @Column(length = 60,nullable = false)
     private String password;
 
-    @OneToOne(cascade = CascadeType.DETACH,fetch = FetchType.LAZY)
-    @JoinColumn(name = "auth_id")
-    private Auth auth;
+    @ManyToMany(cascade = CascadeType.DETACH,fetch = FetchType.EAGER)
+    @JoinTable(name = "user_auth",
+            joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "auth_id",referencedColumnName = "id"))
+    private List<Auth> authList;
 
     public User() {
     }
 
-    public User(String username, String password, Auth auth) {
+    public User(String username, String name, String password, List<Auth> authList) {
         this.username = username;
+        this.name = name;
         this.password = password;
-        this.auth = auth;
+        this.authList = authList;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getId() {
@@ -60,19 +77,21 @@ public class User implements UserDetails {
         return password;
     }
 
-    public Auth getAuth() {
-        return auth;
+    public List<Auth> getAuthList() {
+        return authList;
     }
 
-    public void setAuth(Auth auth) {
-        this.auth = auth;
+    public void setAuthList(List<Auth> authList) {
+        this.authList = authList;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         //需要将List<Authority>转成List<SimpleGrantedAuthority>,否则前端拿不到角色列表
         List<SimpleGrantedAuthority> simpleGrantedAuthorities = new ArrayList<>();
-        simpleGrantedAuthorities.add(new SimpleGrantedAuthority(auth.getAuthority()));
+        for(Auth auth:authList) {
+            simpleGrantedAuthorities.add(new SimpleGrantedAuthority(auth.getAuthority()));
+        }
         return simpleGrantedAuthorities;
     }
 
