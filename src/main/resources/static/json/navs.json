@@ -3,14 +3,54 @@
 		{
 			"title": "物品种类",
 			"icon": "&#xe631;",
-			"href": "/userList",
-			"spread": false
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "原材料种类",
+					"icon": "&#xe631;",
+					"href": "/userList",
+					"spread": false
+				},
+				{
+					"title": "配件种类",
+					"icon": "&#xe631;",
+					"href": "/userList",
+					"spread": false
+				},
+				{
+					"title": "成品种类",
+					"icon": "&#xe631;",
+					"href": "/userList",
+					"spread": false
+				}
+			]
 		},
 		{
 			"title": "出入库记录",
 			"icon": "icon-text",
-			"href": "/userList",
-			"spread": false
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "原材料出入库记录",
+					"icon": "icon-text",
+					"href": "/userList",
+					"spread": false
+				},
+				{
+					"title": "配件出入库记录",
+					"icon": "icon-text",
+					"href": "/userList",
+					"spread": false
+				},
+				{
+					"title": "成品出入库记录",
+					"icon": "icon-text",
+					"href": "/userList",
+					"spread": false
+				}
+			]
 		},
 		{
 			"title": "数据分析",

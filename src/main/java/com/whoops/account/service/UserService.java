@@ -26,18 +26,45 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
+    public User findUserByUsername(String username){
+        return userRepository.findUserByUsername(username);
+    }
+
     public List<User> loadAllUser(){
         return userRepository.findAll();
     }
 
     @Transactional
     public String saveUser(User user){
-        try {
+//        try {
             userRepository.save(user);
-        }catch (Exception e){
-            return "用户保存失败!";
-        }
+//        }catch (Exception e){
+//            return "用户保存失败!";
+//        }
         return "用户保存成功!";
+    }
+
+    @Transactional
+    public String delUserById(Long id){
+//        try {
+            User user = userRepository.getOne(id);
+            userRepository.delete(user);
+//        }catch (Exception e){
+//            return "删除用户失败!";
+//        }
+        return "删除用户成功!";
+    }
+
+    @Transactional
+    public String delUserByIds(List<Long> ids){
+//        try {
+            for (Long id:ids){
+                userRepository.deleteById(id);
+            }
+//        }catch (Exception e){
+//            return "删除用户失败!";
+//        }
+        return "删除用户成功!";
     }
 
 }

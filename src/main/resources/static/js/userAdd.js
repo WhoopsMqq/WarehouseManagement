@@ -18,7 +18,7 @@ layui.use(['form','layer'],function(){
                 parent.location.reload();
             }
         );
-        return false;
+        // return false;
     }
 
     $(".addUser").click(function () {

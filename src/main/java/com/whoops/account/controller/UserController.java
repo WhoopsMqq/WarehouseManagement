@@ -58,7 +58,13 @@ public class UserController {
         List<Auth> authList = new ArrayList<>();
         authList.add(auth);
         User user = new User(username,name,"123456",authList);
-        String msg = userService.saveUser(user);
-        return msg;
+        String message = userService.saveUser(user);
+        return message;
+    }
+
+    @GetMapping("/delUser/{id}")
+    @ResponseBody
+    public void delUserById(@PathVariable(name = "id")Long id){
+        userService.delUserById(id);
     }
 }
