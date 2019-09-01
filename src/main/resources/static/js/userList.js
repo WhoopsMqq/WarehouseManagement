@@ -55,28 +55,6 @@ layui.use(['form','layer','table','laytpl'],function(){
         addUser();
     });
 
-    //批量删除
-    // $(".delAll_btn").click(function(){
-    //     var checkStatus = table.checkStatus('userListTable'),
-    //         data = checkStatus.data,
-    //         userId = [];
-    //     if(data.length > 0) {
-    //         for (var i in data) {
-    //             userId.push(data[i].id);
-    //         }
-    //         layer.confirm('确定删除选中的用户？', {icon: 3, title: '提示信息'}, function (index) {
-    //             // $.get("删除文章接口",{
-    //             //     newsId : newsId  //将需要删除的newsId作为参数传入
-    //             // },function(data){
-    //             tableIns.reload();
-    //             layer.close(index);
-    //             // })
-    //         })
-    //     }else{
-    //         layer.msg("请选择需要删除的用户");
-    //     }
-    // });
-
     //列表操作
     table.on('tool(userList)', function(obj){
         var layEvent = obj.event,

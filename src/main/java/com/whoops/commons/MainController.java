@@ -13,12 +13,6 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping("/main")
-    public String main(Model model){
-        return "/page/main";
-    }
-
-
     @GetMapping("/changePwd")
     public String changePwd(){
         return "/page/user/changePwd";

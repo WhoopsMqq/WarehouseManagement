@@ -21,7 +21,7 @@
 				{
 					"title": "成品种类",
 					"icon": "&#xe631;",
-					"href": "/userList",
+					"href": "/productList",
 					"spread": false
 				}
 			]

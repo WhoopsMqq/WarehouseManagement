@@ -2,69 +2,69 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
-	<title>首页--layui后台管理模板 2.0</title>
+	<title>库存详情</title>
 	<link rel="stylesheet" th:href="@{/layui/css/layui.css}" href="../../static/layui/css/layui.css" media="all" />
 	<link rel="stylesheet" th:href="@{/css/public.css}" href="../../static/css/public.css" media="all" />
+	<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+	<script type="text/javascript" th:src="@{/js/main.js}"></script>
 </head>
 <body class="childrenBody">
 	<div class="layui-row layui-col-space10">
 		<ul class="layui-nav" lay-filter="">
-			<li class="layui-nav-item"><a href="javascript:void(0);">原材料库存</a></li>
-			<li class="layui-nav-item layui-this"><a href="javascript:void(0);">配件库存</a></li>
-			<li class="layui-nav-item"><a href="javascript:void(0);">成品库存</a></li>
+			<li class="layui-nav-item materialLi layui-this"><a href="javascript:void(0);">原材料库存</a></li>
+			<li class="layui-nav-item accessoriesLi"><a href="javascript:void(0);">配件库存</a></li>
+			<li class="layui-nav-item productLi"><a href="javascript:void(0);">成品库存</a></li>
 		</ul>
-		<div class="layui-col-lg12 layui-col-md12">
+		<div class="layui-col-lg12 layui-col-md12 material">
 			<blockquote class="layui-elem-quote title">原材料库存</blockquote>
 			<table class="layui-table">
 				<thead><tr>
 					<th>ID</th><th>类别</th><th>门幅</th><th>颜色</th><th>数量</th>
 				</tr></thead>
-				<thead>
+				<tbody th:each="materialStock : ${materialStockList}">
 					<tr>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th></th>
+						<th th:text="${materialStock.id}"></th>
+						<th th:text="${materialStock.material.name}"></th>
+						<th th:text="${materialStock.material.size}"></th>
+						<th th:text="${materialStock.material.color}"></th>
+						<th th:text="${materialStock.number}"></th>
 					</tr>
-				</thead>
+				</tbody>
 			</table>
 		</div>
-		<div class="layui-col-lg12 layui-col-md12">
+		<div class="layui-col-lg12 layui-col-md12 accessories" style="display: none">
 			<blockquote class="layui-elem-quote title">配件库存</blockquote>
 			<table class="layui-table">
 				<thead><tr>
 					<th>ID</th><th>类别</th><th>数量</th>
 				</tr></thead>
-				<thead>
+				<tbody th:each="accessoriesStock : ${accessoriesStockList}">
 				<tr>
-					<th></th>
-					<th></th>
-					<th></th>
+					<th th:text="${accessoriesStock.id}"></th>
+					<th th:text="${accessoriesStock.accessories.name}"></th>
+					<th th:text="${materialStock.number}"></th>
 				</tr>
-				</thead>
+				</tbody>
 			</table>
 		</div>
-		<div class="layui-col-lg12 layui-col-md12">
+		<div class="layui-col-lg12 layui-col-md12 product" style="display: none">
 			<blockquote class="layui-elem-quote title">成品库存</blockquote>
 			<table class="layui-table">
 				<thead><tr>
 					<th>ID</th><th>名称</th><th>门幅</th><th>颜色</th><th>数量</th>
 				</tr></thead>
-				<thead>
-				<tr>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-				</tr>
-				</thead>
+				<tbody th:each="productStock : ${productStockList}">
+					<tr>
+						<th th:text="${productStock.id}"></th>
+						<th th:text="${productStock.product.name}"></th>
+						<th th:text="${productStock.product.size}"></th>
+						<th th:text="${productStock.product.color}"></th>
+						<th th:text="${productStock.number}"></th>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 	</div>
 
-	<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
-	<script type="text/javascript" th:src="@{/js/main.js}"></script>
 </body>
 </html>
