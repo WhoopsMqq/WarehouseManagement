@@ -20,7 +20,7 @@ layui.use(['form','layer','table','laytpl'],function(){
             {field: 'name', title: '名称', minWidth:200, align:"center"},
             {field: 'size', title: '门幅', minWidth:200, align:'center'},
             {field: 'color', title: '颜色', minWidth:200, align:'center'},
-            {title: '操作', minWidth:175, templet:'#materialListtBar',fixed:"right",align:"center"}
+            {title: '操作', minWidth:175, templet:'#materialListBar',fixed:"right",align:"center"}
         ]]
     });
 
