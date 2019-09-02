@@ -9,9 +9,11 @@ import com.whoops.product.repository.ProductStockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class StockService {
     @Autowired
     private ProductStockRepository productStockRepository;
@@ -32,5 +34,9 @@ public class StockService {
 
     public List<AccessoriesStock> getAccessoriesStock(){
         return accessoriesStockRepository.findAll();
+    }
+
+    public void saveProductStock(ProductStock productStock){
+        productStockRepository.save(productStock);
     }
 }

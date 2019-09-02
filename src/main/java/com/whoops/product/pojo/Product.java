@@ -1,9 +1,6 @@
 package com.whoops.product.pojo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * 成品
@@ -12,22 +9,26 @@ import javax.persistence.Id;
 public class Product {
 
     @Id
+    @Column(length = 20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
      * 名称
      */
+    @Column(length = 20,nullable = false)
     private String name;
 
     /**
      * 颜色
      */
+    @Column(length = 20,nullable = false)
     private String color;
 
     /**
      * 门幅
      */
+    @Column(length = 20,nullable = false)
     private String size;
 
     public Product() {
@@ -70,4 +71,5 @@ public class Product {
     public void setSize(String size) {
         this.size = size;
     }
+
 }
