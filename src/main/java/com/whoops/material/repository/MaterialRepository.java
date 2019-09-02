@@ -4,4 +4,7 @@ import com.whoops.material.pojo.Material;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MaterialRepository extends JpaRepository<Material,Long> {
+
+    Material findByNameAndColorAndSize(String name,String color,String size);
+
 }

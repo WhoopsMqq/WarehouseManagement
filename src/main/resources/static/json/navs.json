@@ -9,13 +9,13 @@
 				{
 					"title": "原材料种类",
 					"icon": "&#xe631;",
-					"href": "/userList",
+					"href": "/materialList",
 					"spread": false
 				},
 				{
 					"title": "配件种类",
 					"icon": "&#xe631;",
-					"href": "/userList",
+					"href": "/accessoriesList",
 					"spread": false
 				},
 				{
@@ -35,19 +35,19 @@
 				{
 					"title": "原材料出入库记录",
 					"icon": "icon-text",
-					"href": "/userList",
+					"href": "/materialInOutList",
 					"spread": false
 				},
 				{
 					"title": "配件出入库记录",
 					"icon": "icon-text",
-					"href": "/userList",
+					"href": "/accessoriesInOutList",
 					"spread": false
 				},
 				{
 					"title": "成品出入库记录",
 					"icon": "icon-text",
-					"href": "/userList",
+					"href": "/productInOutList",
 					"spread": false
 				}
 			]

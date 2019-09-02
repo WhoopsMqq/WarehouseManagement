@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>成品列表</title>
+    <title>原材料列表</title>
     <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all" />
     <link rel="stylesheet" th:href="@{/css/public.css}" media="all" />
 </head>
@@ -11,20 +11,20 @@
     <blockquote class="layui-elem-quote quoteBox">
         <form class="layui-form">
             <div class="layui-inline">
-                <a class="layui-btn layui-btn-normal addNews_btn">添加成品种类</a>
+                <a class="layui-btn layui-btn-normal addNews_btn">添加原材料种类</a>
             </div>
         </form>
     </blockquote>
-    <table id="productList" lay-filter="productList">
+    <table id="materialList" lay-filter="materialList">
 
     </table>
 
     <!--操作-->
-    <script type="text/html" id="productListBar">
+    <script type="text/html" id="materialListBar">
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     </script>
 </form>
 <script type="text/javascript" th:src="@{/layui/layui.js}" ></script>
-<script type="text/javascript" th:src="@{/js/product/productList.js}" ></script>
+<script type="text/javascript" th:src="@{/js/material/matrialList.js}" ></script>
 </body>
 </html>
