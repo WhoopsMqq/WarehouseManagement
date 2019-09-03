@@ -18,9 +18,6 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @Autowired
-    private StockService stockService;
-
     @GetMapping("/productList")
     public String productList(){
         return "/page/product/productList";

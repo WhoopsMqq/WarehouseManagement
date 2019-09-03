@@ -4,8 +4,11 @@ import com.whoops.account.pojo.Auth;
 import com.whoops.account.pojo.User;
 import com.whoops.account.service.AuthService;
 import com.whoops.account.service.UserService;
+import com.whoops.vo.Response;
 import com.whoops.vo.TableData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -51,15 +54,9 @@ public class UserController {
         return "/page/user/userAdd";
     }
 
-    @RequestMapping("/addUser")
-    @ResponseBody
-    public String addUser(@RequestParam("username") String username,@RequestParam("name") String name){
-        Auth auth = authService.getAuthById(1L);
-        List<Auth> authList = new ArrayList<>();
-        authList.add(auth);
-        User user = new User(username,name,"123456",authList);
-        String message = userService.saveUser(user);
-        return message;
+    @PostMapping("/userAdd")
+    public ResponseEntity<Response> addUser(@RequestBody User user){
+        return ResponseEntity.ok().body(userService.saveUser(user));
     }
 
     @GetMapping("/delUser/{id}")

@@ -1,7 +1,10 @@
 package com.whoops.account.service;
 
+import com.whoops.account.pojo.Auth;
 import com.whoops.account.pojo.User;
+import com.whoops.account.repository.AuthRepository;
 import com.whoops.account.repository.UserRepository;
+import com.whoops.vo.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,13 +12,18 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private AuthRepository authRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -26,44 +34,44 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
-    public User findUserByUsername(String username){
-        return userRepository.findUserByUsername(username);
-    }
-
     public List<User> loadAllUser(){
         return userRepository.findAll();
     }
 
-    @Transactional
-    public String saveUser(User user){
-//        try {
-            userRepository.save(user);
-//        }catch (Exception e){
-//            return "用户保存失败!";
-//        }
-        return "用户保存成功!";
+    public Response saveUser(User user){
+        User existedUser = userRepository.findUserByUsername(user.getUsername());
+        if(existedUser != null){
+            return new Response(false,"用户名已存在,请换一个!");
+        }else if(user.getId() != null && user.getId() != 0L){
+            User oldUser = userRepository.getOne(user.getId());
+            oldUser.setName(user.getName());
+            oldUser.setUsername(user.getUsername());
+            User editedUser = userRepository.save(oldUser);
+            if(editedUser != null){
+                return new Response(true,"修改成功!");
+            }
+            return  new Response(false,"修改失败!");
+        }else{
+            user.setPassword("123456");
+            Auth auth = authRepository.getOne(1L);
+            List<Auth> authList = new ArrayList<>();
+            authList.add(auth);
+            user.setAuthList(authList);
+            User savedUser = userRepository.save(user);
+            if(savedUser != null){
+                return new Response(true,"保存成功!");
+            }
+            return new Response(false,"保存失败!");
+        }
     }
 
-    @Transactional
     public String delUserById(Long id){
-//        try {
+        try {
             User user = userRepository.getOne(id);
             userRepository.delete(user);
-//        }catch (Exception e){
-//            return "删除用户失败!";
-//        }
-        return "删除用户成功!";
-    }
-
-    @Transactional
-    public String delUserByIds(List<Long> ids){
-//        try {
-            for (Long id:ids){
-                userRepository.deleteById(id);
-            }
-//        }catch (Exception e){
-//            return "删除用户失败!";
-//        }
+        }catch (Exception e){
+            return "删除用户失败!";
+        }
         return "删除用户成功!";
     }
 
