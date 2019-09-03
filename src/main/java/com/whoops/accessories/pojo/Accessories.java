@@ -1,5 +1,7 @@
 package com.whoops.accessories.pojo;
 
+import com.whoops.commons.Constants;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,11 +18,6 @@ public class Accessories {
     private Long id;
 
     /**
-     * 配件种类
-     */
-    private Integer type;
-
-    /**
      * 配件名称
      */
     private String name;
@@ -28,9 +25,12 @@ public class Accessories {
     public Accessories() {
     }
 
-    public Accessories(Long id, Integer type, String name) {
+    public Accessories(Long id, String name) {
         this.id = id;
-        this.type = type;
+        this.name = name;
+    }
+
+    public Accessories( String name) {
         this.name = name;
     }
 
@@ -40,14 +40,6 @@ public class Accessories {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
     }
 
     public String getName() {
