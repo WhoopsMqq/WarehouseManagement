@@ -40,7 +40,7 @@ public class ProductInOutController {
     }
 
     @PostMapping(value="/productInOutAdd", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<Response> addProduct(@RequestBody ProductInOut productInOut){
+    public ResponseEntity<Response> addProductInOut(@RequestBody ProductInOut productInOut){
         return ResponseEntity.ok().body(productInOutService.saveProductInOut(productInOut));
     }
 

@@ -2,7 +2,6 @@ package com.whoops.product.controller;
 
 import com.whoops.product.pojo.Product;
 import com.whoops.product.service.ProductService;
-import com.whoops.stock.service.StockService;
 import com.whoops.vo.Response;
 import com.whoops.vo.TableData;
 import org.springframework.beans.factory.annotation.Autowired;

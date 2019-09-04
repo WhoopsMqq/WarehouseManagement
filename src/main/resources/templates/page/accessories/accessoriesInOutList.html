@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>配件出入库列表</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all" />
+    <link rel="stylesheet" th:href="@{/css/public.css}" media="all" />
+</head>
+<body class="childrenBody">
+<form class="layui-form">
+    <blockquote class="layui-elem-quote quoteBox">
+        <form class="layui-form">
+            <div class="layui-inline">
+                <a class="layui-btn layui-btn-normal addNews_btn">添加配件出入库记录</a>
+            </div>
+        </form>
+    </blockquote>
+    <table id="accessoriesInOutList" class="layui-table" lay-filter="accessoriesInOutList">
+        <thead><tr>
+            <th>ID</th><th>配件名称</th><th>数量</th><th>单价</th><th>总价</th><th>出入库单号</th><th>出入库时间</th><th>经办人</th><th>类型</th>
+        </tr></thead>
+        <tbody th:each="accessoriesInOut : ${accessoriesInOutList}">
+        <tr>
+            <th th:text="${accessoriesInOut.id}"></th>
+            <th th:text="${accessoriesInOut.accessoriesName}"></th>
+            <th th:text="${accessoriesInOut.number}"></th>
+            <th th:text="${accessoriesInOut.price}"></th>
+            <th th:text="${accessoriesInOut.totalPrice}"></th>
+            <th th:text="${accessoriesInOut.formNum}"></th>
+            <th th:text="${accessoriesInOut.createTime}"></th>
+            <th th:text="${accessoriesInOut.username}"></th>
+            <th th:text="${accessoriesInOut.typeName}"></th>
+        </tr>
+        </tbody>
+    </table>
+
+</form>
+<script type="text/javascript" th:src="@{/layui/layui.js}" ></script>
+<script type="text/javascript" th:src="@{/js/accessories/accessoriesInOutList.js}" ></script>
+</body>
+</html>

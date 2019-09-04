@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>原材料出入库列表</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all" />
+    <link rel="stylesheet" th:href="@{/css/public.css}" media="all" />
+</head>
+<body class="childrenBody">
+<form class="layui-form">
+    <blockquote class="layui-elem-quote quoteBox">
+        <form class="layui-form">
+            <div class="layui-inline">
+                <a class="layui-btn layui-btn-normal addNews_btn">添加原材料出入库记录</a>
+            </div>
+        </form>
+    </blockquote>
+    <table id="productInOutList" class="layui-table" lay-filter="productInOutList">
+        <thead><tr>
+            <th>ID</th><th>原材料名称</th><th>数量</th><th>单价</th><th>总价</th><th>出入库单号</th><th>出入库时间</th><th>经办人</th><th>类型</th>
+        </tr></thead>
+        <tbody th:each="materialInOut : ${materialInOutList}">
+        <tr>
+            <th th:text="${materialInOut.id}"></th>
+            <th th:text="${materialInOut.materialName}"></th>
+            <th th:text="${materialInOut.number}"></th>
+            <th th:text="${materialInOut.price}"></th>
+            <th th:text="${materialInOut.totalPrice}"></th>
+            <th th:text="${materialInOut.formNum}"></th>
+            <th th:text="${materialInOut.createTime}"></th>
+            <th th:text="${materialInOut.username}"></th>
+            <th th:text="${materialInOut.typeName}"></th>
+        </tr>
+        </tbody>
+    </table>
+
+</form>
+<script type="text/javascript" th:src="@{/layui/layui.js}" ></script>
+<script type="text/javascript" th:src="@{/js/material/materialInOutList.js}" ></script>
+</body>
+</html>
