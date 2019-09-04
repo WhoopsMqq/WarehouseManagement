@@ -65,14 +65,9 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    public String delUserById(Long id){
-        try {
-            User user = userRepository.getOne(id);
-            userRepository.delete(user);
-        }catch (Exception e){
-            return "删除用户失败!";
-        }
-        return "删除用户成功!";
+    public void delUserById(Long id){
+        User user = userRepository.getOne(id);
+        userRepository.delete(user);
     }
 
 }

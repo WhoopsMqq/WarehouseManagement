@@ -84,7 +84,7 @@ public class ProductInOut {
 
     public void setProduct(Product product) {
         this.product = product;
-        this.productName = product.getName();
+        this.productName = product.getName()+"/"+product.getSize()+"/"+product.getColor();
     }
 
     public Long getNumber() {

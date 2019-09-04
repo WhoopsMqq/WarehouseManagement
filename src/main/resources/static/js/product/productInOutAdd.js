@@ -3,12 +3,12 @@ layui.use(['form','layer'],function(){
     layer = parent.layer === undefined ? layui.layer : top.layer;
     $ = layui.jquery;
 
-    function productAdd(){
+    function productInOutAdd(){
         var index = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
         var csrfToken = $("meta[name='_csrf']").attr("content");
         var csrfHeader = $("meta[name='_csrf_header']").attr("content");
         $.ajax({
-            url: "/productAdd",
+            url: "/productInOutAdd",
             type: 'POST',
             // async: false,
             dataType: "JSON",
@@ -17,10 +17,10 @@ layui.use(['form','layer'],function(){
                 request.setRequestHeader(csrfHeader, csrfToken); // 添加  CSRF Token
             },
             data:JSON.stringify({
-                "id": Number($(".id").val()),
-                "name": $(".name").val(),
-                "size": $(".size").val(),
-                "color": $(".color").val()
+                "product": {"id": $(".product_id").val()},
+                "number": $(".number").val(),
+                "formNum": $(".formNum").val(),
+                "type": $(".type").val()
             }),
             success: function(data){
                 if(data.success){
@@ -42,7 +42,7 @@ layui.use(['form','layer'],function(){
     }
 
     $(".addProduct").click(function () {
-        productAdd();
+        productInOutAdd();
     });
 
 

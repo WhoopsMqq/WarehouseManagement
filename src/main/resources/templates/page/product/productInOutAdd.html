@@ -13,25 +13,31 @@
     <div class="layui-form-item layui-row layui-col-xs12">
         <label class="layui-form-label">产品类型</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input name" name="name" lay-verify="required" placeholder="请输入名称">
+            <select class="layui-select product_id" name="product_id" >
+                <option th:each="product : ${productList}" th:value="${product.id}" th:text="${product.name}+'/'+${product.size}+'/'+${product.color}" >
+                </option>
+            </select>
         </div>
     </div>
     <div class="layui-form-item layui-row layui-col-xs12">
-        <label class="layui-form-label">门幅</label>
+        <label class="layui-form-label">数量</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input size" name="size" lay-verify="required" placeholder="请输入门幅">
+            <input type="text" class="layui-input number" name="number" lay-verify="required" >
         </div>
     </div>
     <div class="layui-form-item layui-row layui-col-xs12">
-        <label class="layui-form-label">颜色</label>
+        <label class="layui-form-label">出入库单号</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input color" name="color" lay-verify="required" placeholder="请输入颜色">
+            <input type="text" class="layui-input formNum" name="formNum" lay-verify="required" >
         </div>
     </div>
     <div class="layui-form-item layui-row layui-col-xs12">
-        <label class="layui-form-label">颜色</label>
+        <label class="layui-form-label">类型</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input color" name="color" lay-verify="required" placeholder="请输入颜色">
+            <select class="layui-select type" name="type">
+                <option value="1">出库</option>
+                <option value="2">入库</option>
+            </select>
         </div>
     </div>
     <div class="layui-form-item layui-row layui-col-xs12">
