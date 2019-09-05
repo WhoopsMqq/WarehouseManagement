@@ -1,5 +1,7 @@
 package com.whoops.material.service;
 
+import com.whoops.account.pojo.User;
+import com.whoops.commons.CurrentUser;
 import com.whoops.material.pojo.Material;
 import com.whoops.material.pojo.MaterialInOut;
 import com.whoops.material.pojo.MaterialStock;
@@ -39,10 +41,10 @@ public class MaterialInOutService {
     }
 
     public Response saveMaterialInOut(MaterialInOut materialInOut) {
-//        User currentUser = CurrentUser.getUser();
-//        if(currentUser == null){
-//            return new Response(false,"请先登录,再进行操作!","/login");
-//        }
+        User currentUser = CurrentUser.getUser();
+        if(currentUser == null){
+            return new Response(false,"请先登录,再进行操作!","/login");
+        }
 
         Material material = materialRepository.getOne(materialInOut.getMaterial().getId());
         MaterialStock materialStock = materialStockRepository.findByMaterial(material);
@@ -57,8 +59,8 @@ public class MaterialInOutService {
         }
 
         materialInOut.setMaterial(material);
-//        productInOut.setUser_id(currentUser.getId());
-//        productInOut.setUsername(currentUser.getUsername());
+        materialInOut.setUser_id(currentUser.getId());
+        materialInOut.setUsername(currentUser.getUsername());
         materialInOut.setType(materialInOut.getType());
         MaterialInOut savedMaterialInOut = materialInOutRepository.save(materialInOut);
         if(savedMaterialInOut != null){

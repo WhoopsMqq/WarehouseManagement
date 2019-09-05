@@ -6,6 +6,8 @@ import com.whoops.accessories.pojo.AccessoriesStock;
 import com.whoops.accessories.repository.AccessoriesInOutRepository;
 import com.whoops.accessories.repository.AccessoriesRepository;
 import com.whoops.accessories.repository.AccessoriesStockRepository;
+import com.whoops.account.pojo.User;
+import com.whoops.commons.CurrentUser;
 import com.whoops.vo.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,10 +43,10 @@ public class AccessoriesInOutService {
     }
 
     public Response saveAccessoriesInOut(AccessoriesInOut accessoriesInOut) {
-//        User currentUser = CurrentUser.getUser();
-//        if(currentUser == null){
-//            return new Response(false,"请先登录,再进行操作!","/login");
-//        }
+        User currentUser = CurrentUser.getUser();
+        if(currentUser == null){
+            return new Response(false,"请先登录,再进行操作!","/login");
+        }
 
         Accessories accessories = accessoriesRepository.getOne(accessoriesInOut.getAccessories().getId());
         AccessoriesStock accessoriesStock = accessoriesStockRepository.findByAccessories(accessories);
@@ -59,8 +61,8 @@ public class AccessoriesInOutService {
         }
 
         accessoriesInOut.setAccessories(accessories);
-//        productInOut.setUser_id(currentUser.getId());
-//        productInOut.setUsername(currentUser.getUsername());
+        accessoriesInOut.setUser_id(currentUser.getId());
+        accessoriesInOut.setUsername(currentUser.getUsername());
         accessoriesInOut.setType(accessoriesInOut.getType());
         AccessoriesInOut savedAccessoriesInOut = accessoriesInOutRepository.save(accessoriesInOut);
         if(savedAccessoriesInOut != null){

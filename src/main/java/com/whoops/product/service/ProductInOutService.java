@@ -46,10 +46,10 @@ public class ProductInOutService {
     }
 
     public Response saveProductInOut(ProductInOut productInOut) {
-//        User currentUser = CurrentUser.getUser();
-//        if(currentUser == null){
-//            return new Response(false,"请先登录,再进行操作!","/login");
-//        }
+        User currentUser = CurrentUser.getUser();
+        if(currentUser == null){
+            return new Response(false,"请先登录,再进行操作!","/login");
+        }
 
         Product product = productRepository.getOne(productInOut.getProduct().getId());
         ProductStock productStock = productStockRepository.findByProduct(product);
@@ -64,8 +64,8 @@ public class ProductInOutService {
         }
 
         productInOut.setProduct(product);
-//        productInOut.setUser_id(currentUser.getId());
-//        productInOut.setUsername(currentUser.getUsername());
+        productInOut.setUser_id(currentUser.getId());
+        productInOut.setUsername(currentUser.getUsername());
         productInOut.setType(productInOut.getType());
         ProductInOut savedProductInOut = productInOutRepository.save(productInOut);
         if(savedProductInOut != null){

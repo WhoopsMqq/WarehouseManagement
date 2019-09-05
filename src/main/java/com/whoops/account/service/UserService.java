@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -24,6 +25,9 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private AuthRepository authRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -52,7 +56,7 @@ public class UserService implements UserDetailsService {
             }
             return  new Response(false,"修改失败!");
         }else{
-            user.setPassword("123456");
+            user.setPassword(passwordEncoder.encode("123456"));
             Auth auth = authRepository.getOne(1L);
             List<Auth> authList = new ArrayList<>();
             authList.add(auth);

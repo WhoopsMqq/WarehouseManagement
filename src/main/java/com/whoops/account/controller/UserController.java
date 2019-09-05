@@ -4,8 +4,10 @@ import com.whoops.account.pojo.Auth;
 import com.whoops.account.pojo.User;
 import com.whoops.account.service.AuthService;
 import com.whoops.account.service.UserService;
+import com.whoops.commons.CurrentUser;
 import com.whoops.vo.Response;
 import com.whoops.vo.TableData;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -63,5 +65,21 @@ public class UserController {
     @ResponseBody
     public void delUserById(@PathVariable(name = "id")Long id){
         userService.delUserById(id);
+    }
+
+    @GetMapping("/changePwd")
+    public String changePwd(Model model){
+        User user = CurrentUser.getUser();
+        if(user == null || StringUtils.isEmpty(user.getUsername())){
+            return "/login";
+        }
+        model.addAttribute("currentUser",user);
+        return "/page/user/changePwd";
+    }
+
+    @PostMapping("/changePwd")
+    public ResponseEntity<Response> savePwd(){
+
+        return null;
     }
 }
