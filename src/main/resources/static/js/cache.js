@@ -71,11 +71,12 @@ layui.use(['form','jquery',"layer"],function() {
     });
 
     //退出
-    $(".signOut").click(function(){
-        window.sessionStorage.removeItem("menu");
-        menu = [];
-        window.sessionStorage.removeItem("curmenu");
-    })
+    // $(".signOut").click(function(){
+    //     $.ajax({
+    //         url: "/logout",
+    //         type: 'POST'
+    //     });
+    // });
 
     //判断是否修改过系统基本设置，去显示底部版权信息
     if(window.sessionStorage.getItem("systemParameter")){

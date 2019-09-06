@@ -11,11 +11,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,6 +26,9 @@ public class UserController {
 
     @Autowired
     private AuthService authService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/login")
     public String login(){
@@ -78,8 +81,18 @@ public class UserController {
     }
 
     @PostMapping("/changePwd")
-    public ResponseEntity<Response> savePwd(){
+    public ResponseEntity<Response> editPwd(@RequestParam("newPassword") String newPassword){
+        return ResponseEntity.ok().body(userService.editPwd(newPassword));
+    }
 
-        return null;
+    @GetMapping("/checkPwd")
+    @ResponseBody
+    public String checkPwd(@RequestParam("password") String password){
+        User currentUser = CurrentUser.getUser();
+        if(passwordEncoder.matches(password,currentUser.getPassword())){
+            return "1";
+        }else{
+            return "0";
+        }
     }
 }

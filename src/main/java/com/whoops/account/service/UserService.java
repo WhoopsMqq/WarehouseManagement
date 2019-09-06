@@ -4,6 +4,7 @@ import com.whoops.account.pojo.Auth;
 import com.whoops.account.pojo.User;
 import com.whoops.account.repository.AuthRepository;
 import com.whoops.account.repository.UserRepository;
+import com.whoops.commons.CurrentUser;
 import com.whoops.vo.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -72,6 +73,17 @@ public class UserService implements UserDetailsService {
     public void delUserById(Long id){
         User user = userRepository.getOne(id);
         userRepository.delete(user);
+    }
+
+    public Response editPwd(String password){
+        try{
+            User user = CurrentUser.getUser();
+            user.setPassword(passwordEncoder.encode(password));
+            userRepository.save(user);
+        }catch (Exception e){
+            return new Response(false,"密码修改失败!");
+        }
+        return new Response(true,"密码修改成功!");
     }
 
 }
