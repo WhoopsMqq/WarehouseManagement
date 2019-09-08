@@ -26,4 +26,6 @@ public class StockController {
         model.addAttribute("accessoriesStockList",accessoriesStockList);
         return "/page/main";
     }
+
+
 }

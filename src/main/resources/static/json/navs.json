@@ -55,7 +55,7 @@
 		{
 			"title": "数据分析",
 			"icon": "&#xe634;",
-			"href": "/userList",
+			"href": "/dataAnalysis",
 			"spread": false
 		},
 		{

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>数据分析</title>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all" />
+    <link rel="stylesheet" th:href="@{/css/public.css}" media="all" />
+</head>
+<body class="childrenBody">
+<form class="layui-form">
+    <blockquote class="layui-elem-quote quoteBox">
+        <div class="layui-input-inline" style="font-size: 18px">
+            起始时间:
+            <input type="text" class="startTime" id="startTime" style="width: 95px;height: 28px" >
+            终止时间:
+            <input type="text" class="endTime" id="endTime" style="width: 95px;height: 28px">
+            种类:
+            <div class="layui-input-inline" style="font-size: 18px">
+            <select id="kind" style="width: 95px;height: 28px">
+                <option value="1">原材料</option>
+                <option value="2">配件</option>
+                <option value="3">成品</option>
+            </select>
+            </div>
+        </div>
+        <form class="layui-form">
+            <div class="layui-inline">
+                <a class="layui-btn layui-btn-normal search_btn">查询</a>
+            </div>
+        </form>
+    </blockquote>
+    <table id="analysisList" lay-filter="analysisList">
+
+    </table>
+</form>
+<script type="text/javascript" th:src="@{/layui/layui.js}" ></script>
+<script type="text/javascript" th:src="@{/js/dataAnalysis.js}" ></script>
+</body>
+</html>

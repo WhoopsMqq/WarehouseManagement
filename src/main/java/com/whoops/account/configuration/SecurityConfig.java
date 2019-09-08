@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .headers().frameOptions().disable()
                 .and().exceptionHandling().accessDeniedPage("/403");//异常处理拒绝访问就重定向到403页面
-        http.csrf().disable();
+//        http.csrf().disable();
     }
 
     //2.将认证管理注入进来

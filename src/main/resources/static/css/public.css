@@ -168,4 +168,6 @@ h2.method{ font-size:18px; line-height:45px; padding-left:5px;}
     .layui-col-xs12 .layui-input-inline{ left:0 !important; width:auto !important;}
     .noFind{ padding-top:0;}
     *[pc]{ display:none;}
+.timeDiv{font-size:18px }
+.time{width:80px;height: 24px}
 }
