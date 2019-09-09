@@ -1,8 +1,9 @@
-layui.use(['form','layer','laydate'],function(){
+layui.use(['form','layer','table','laydate'],function(){
     var form = layui.form;
     layer = parent.layer === undefined ? layui.layer : top.layer;
     $ = layui.jquery;
     var laydate = layui.laydate;
+    table = layui.table;
 
     laydate.render({
         elem:'#startTime',
@@ -15,39 +16,38 @@ layui.use(['form','layer','laydate'],function(){
         max: $("#startTime").val()
     });
 
-    function loadAnalysis(){
-        var index = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
-        $.ajax({
-            url: "/loadAnalysis",
-            type: 'GET',
-            dataType: "JSON",
-            contentType: "application/json;charset=UTF-8",
-            data:{
-                startTime:$(".startTime").val(),
-                endTime:$(".endTime").val(),
-                kind:$
-            },
-            success: function(data){
-                if(data.success){
-                    top.layer.close(index);
-                    top.layer.msg(data.message);
-                    layer.closeAll("iframe");
-                    //刷新父页面
-                    parent.location.reload();
-                }else{
-                    top.layer.close(index);
-                    top.layer.msg(data.message);
-                }
-            },
-            error : function(data) {
+    var tableIns = table.render({
+        elem: '#analysisList',
+        url : '/loadAnalysis',
+        data:{
+            startTime:$(".startTime").val(),
+            endTime:$(".endTime").val(),
+            kind:$(".kind").val()
+        },
+        cellMinWidth : 95,
+        page : false,
+        height : "full-125",
+        limits : [10,15,20,25],
+        limit : 20,
+        id : "analysisListTable",
+        cols : [[
+            {field: 'id',title:'编号',minWidth:50,align:'center'},
+            {field: 'name', title: '名称', minWidth:200, align:"center"},
+            {field: 'typeName', title: '类型', minWidth:200, align:'center'},
+            {field: 'number', title: '数量', minWidth:200, align:'center'},
+            {field: 'totalPrice', title: '总价', minWidth:200, align:'center'}
+        ]]
+    });
 
-            }
+    $(".search_btn").on('click',function () {
+        table.reload('analysisListTable',{
+           method: 'get',
+           where: {
+               startTime:$(".startTime").val(),
+               endTime:$(".endTime").val(),
+               kind:$(".kind").val()
+           }
         });
-        // return false;
-    }
-
-    $(".search_btn").click(function () {
-        loadAnalysis();
     });
 
 });

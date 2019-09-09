@@ -1,6 +1,7 @@
 package com.whoops.analysis.pojo;
 
 public class Analysis {
+    private Integer id;
     private String name;
     private String typeName;
     private Long number;
@@ -9,7 +10,21 @@ public class Analysis {
     public Analysis() {
     }
 
+    public Analysis(Integer id, String name, String typeName) {
+        this.id = id;
+        this.name = name;
+        this.typeName = typeName;
+    }
+
     public Analysis(String name, String typeName, Long number, Double totalPrice) {
+        this.name = name;
+        this.typeName = typeName;
+        this.number = number;
+        this.totalPrice = totalPrice;
+    }
+
+    public Analysis(Integer id, String name, String typeName, Long number, Double totalPrice) {
+        this.id = id;
         this.name = name;
         this.typeName = typeName;
         this.number = number;
@@ -46,5 +61,13 @@ public class Analysis {
 
     public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

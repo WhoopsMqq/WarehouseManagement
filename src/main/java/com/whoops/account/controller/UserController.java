@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,9 +27,6 @@ public class UserController {
 
     @Autowired
     private AuthService authService;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/login")
     public String login(){
@@ -88,6 +86,7 @@ public class UserController {
     @GetMapping("/checkPwd")
     @ResponseBody
     public String checkPwd(@RequestParam("password") String password){
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         User currentUser = CurrentUser.getUser();
         if(passwordEncoder.matches(password,currentUser.getPassword())){
             return "1";

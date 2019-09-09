@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-public class ProductInOut {
+public class  ProductInOut {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

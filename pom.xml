@@ -7,7 +7,7 @@
   <groupId>com.whoops</groupId>
   <artifactId>WarehouseManagement</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
 
   <name>WarehouseManagement Maven Webapp</name>
   <url>http://www.example.com</url>
