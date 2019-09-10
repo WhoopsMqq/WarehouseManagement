@@ -23,7 +23,7 @@ public class AccessoriesController {
 
     @GetMapping("/accessoriesList")
     public String accessoriesList(){
-        return "/page/accessories/accessoriesList";
+        return "page/accessories/accessoriesList";
     }
 
     @GetMapping("/accessoriesListJson")
@@ -35,7 +35,7 @@ public class AccessoriesController {
 
     @GetMapping("/accessoriesAdd")
     public String accessoriesAdd(){
-        return "/page/accessories/accessoriesAdd";
+        return "page/accessories/accessoriesAdd";
     }
 
 

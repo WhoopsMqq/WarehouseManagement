@@ -1,6 +1,5 @@
 package com.whoops.account.controller;
 
-import com.whoops.account.pojo.Auth;
 import com.whoops.account.pojo.User;
 import com.whoops.account.service.AuthService;
 import com.whoops.account.service.UserService;
@@ -9,7 +8,6 @@ import com.whoops.vo.Response;
 import com.whoops.vo.TableData;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,19 +28,19 @@ public class UserController {
 
     @GetMapping("/login")
     public String login(){
-        return "/page/login/login";
+        return "page/login/login";
     }
 
     @RequestMapping("/login-error")
     public String loginError(Model model){
         model.addAttribute("loginError",true);
         model.addAttribute("errorMsg","用户名或密码错误");
-        return "/page/login/login";
+        return "page/login/login";
     }
 
     @RequestMapping("/userList")
     public String userList(Model model){
-        return "/page/user/userList";
+        return "page/user/userList";
     }
 
     @GetMapping("/userListJson")
@@ -54,7 +52,7 @@ public class UserController {
 
     @GetMapping("/userAdd")
     public String userAdd(){
-        return "/page/user/userAdd";
+        return "page/user/userAdd";
     }
 
     @PostMapping("/userAdd")
@@ -75,7 +73,7 @@ public class UserController {
             return "/login";
         }
         model.addAttribute("currentUser",user);
-        return "/page/user/changePwd";
+        return "page/user/changePwd";
     }
 
     @PostMapping("/changePwd")

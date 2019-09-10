@@ -30,13 +30,13 @@ public class ProductInOutController {
     public String productInOutList(Model model){
         List<ProductInOut> productInOutList = productInOutService.loadAllProductInOut();
         model.addAttribute("productInOutList",productInOutList);
-        return "/page/product/productInOutList";
+        return "page/product/productInOutList";
     }
 
     @GetMapping("/productInOutAdd")
     public String productInOutAdd(Model model){
         model.addAttribute("productList",productService.loadAllProduct());
-        return "/page/product/productInOutAdd";
+        return "page/product/productInOutAdd";
     }
 
     @PostMapping(value="/productInOutAdd", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)

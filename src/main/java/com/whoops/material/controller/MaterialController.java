@@ -24,7 +24,7 @@ public class MaterialController {
 
     @GetMapping("/materialList")
     public String materialList(){
-        return "/page/material/materialList";
+        return "page/material/materialList";
     }
 
     @GetMapping("/materialListJson")
@@ -36,7 +36,7 @@ public class MaterialController {
 
     @GetMapping("/materialAdd")
     public String productAdd(){
-        return "/page/material/materialAdd";
+        return "page/material/materialAdd";
     }
 
 

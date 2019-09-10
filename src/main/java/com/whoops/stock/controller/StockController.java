@@ -24,7 +24,7 @@ public class StockController {
         model.addAttribute("productStockList",productStockList);
         model.addAttribute("materialStockList",materialStockList);
         model.addAttribute("accessoriesStockList",accessoriesStockList);
-        return "/page/main";
+        return "page/main";
     }
 
 

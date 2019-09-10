@@ -26,13 +26,13 @@ public class AccessoriesInOutController {
     public String accessoriesInOutList(Model model){
         List<AccessoriesInOut> accessoriesInOutList = accessoriesInOutService.loadAllAccessoriesInOut();
         model.addAttribute("accessoriesInOutList",accessoriesInOutList);
-        return "/page/accessories/accessoriesInOutList";
+        return "page/accessories/accessoriesInOutList";
     }
 
     @GetMapping("/accessoriesInOutAdd")
     public String accessoriesInOutAdd(Model model){
         model.addAttribute("accessoriesList",accessoriesService.loadAllAccessories());
-        return "/page/accessories/accessoriesInOutAdd";
+        return "page/accessories/accessoriesInOutAdd";
     }
 
     @PostMapping(value="/accessoriesInOutAdd", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)

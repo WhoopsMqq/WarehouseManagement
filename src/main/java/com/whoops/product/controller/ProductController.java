@@ -19,7 +19,7 @@ public class ProductController {
 
     @GetMapping("/productList")
     public String productList(){
-        return "/page/product/productList";
+        return "page/product/productList";
     }
 
     @GetMapping("/productListJson")
@@ -31,7 +31,7 @@ public class ProductController {
 
     @GetMapping("/productAdd")
     public String productAdd(){
-        return "/page/product/productAdd";
+        return "page/product/productAdd";
     }
 
 

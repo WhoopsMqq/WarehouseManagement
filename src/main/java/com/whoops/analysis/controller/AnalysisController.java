@@ -18,7 +18,7 @@ public class AnalysisController {
 
     @GetMapping("/dataAnalysis")
     public String dataAnalysis(){
-        return "/page/dataAnalysis";
+        return "page/dataAnalysis";
     }
 
     @GetMapping("/loadAnalysis")

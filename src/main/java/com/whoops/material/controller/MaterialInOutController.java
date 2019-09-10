@@ -27,13 +27,13 @@ public class MaterialInOutController {
     public String materialInOutList(Model model){
         List<MaterialInOut> materialInOutList = materialInOutService.loadAllMaterialInOut();
         model.addAttribute("materialInOutList",materialInOutList);
-        return "/page/material/materialInOutList";
+        return "page/material/materialInOutList";
     }
 
     @GetMapping("/materialInOutAdd")
     public String materialInOutAdd(Model model){
         model.addAttribute("materialList",materialService.loadAllMaterial());
-        return "/page/material/materialInOutAdd";
+        return "page/material/materialInOutAdd";
     }
 
     @PostMapping(value="/materialInOutAdd", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
