@@ -17,4 +17,4 @@ spring:
 server:
 #  servlet:
 #    context-path: /app
-  port: 8321
+  port: 8082

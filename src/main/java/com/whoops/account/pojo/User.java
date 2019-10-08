@@ -1,6 +1,5 @@
 package com.whoops.account.pojo;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +11,6 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-//@JsonIgnoreProperties("hibernateLazyInitializer")
 public class User implements UserDetails, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
